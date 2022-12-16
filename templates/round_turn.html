@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            
+        </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+        <link rel="stylesheet" href="static/css/round_turn.css">
+
+         <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div id="header">
+            <div id="player_header_container"><p id="player_header_text">Round {{round}} - {{turn}} Turns Remaining</p></div>
+        </div>
+
+        <div id="form_info">
+            <div id="player_turn_info">
+                {% for name, pfp, handicapOn in currPlayer %}
+                <img src="static/full_character_assets/{{pfp}}_head.png" alt="{{pfp}} character head" id="player_head_img">
+                <p id="player_turn_text" class="{{'orange_text' if handicapOn }}">{{name}} Game:</p>
+                {% endfor %}
+            </div>
+            
+            {% for name, category, platform, color, image in game %}
+            <div id="card_info">
+                
+                <div id="image" style="border-color: {{color}}">
+                    <img src="static/title_cards/{{image}}" id="title_card_img">
+                </div>
+                <div id="category" tyle="border-color: {{color}}">
+                    <p id="category_text">{{category}}</p>
+                </div>
+                <button id="reload_button">
+                    <div id="reload_div">
+                        <p id="reload_text">randomize again</p>
+                    </div>
+                </button>
+            </div>
+
+            <div id="game_info">
+                <p id="game_name"><u>{{name}}</u></p>
+                <p id="game_console">{{platform}}</p>
+            </div>
+            {% endfor %}
+
+            <div id="value_buttons">
+                {% for ok, superb, handicapOn in pointData %}
+                <button class="value_button">
+                    <div class="value_div blue">
+                        <img src="static/assets/try_again.png" alt="Try Again image" class="value_div_img need_adjustment">
+                        <p class="value_div_text {{'orange_text' if handicapOn}}">- 0 pts</p>
+                    </div>
+                </button>
+                <button class="value_button">
+                    <div class="value_div green">
+                        <img src="static/assets/ok.png" alt="OK image" class="value_div_img">
+                        <p class="value_div_text {{'orange_text' if handicapOn}}">- {{ok * 0.75 if handicapOn else ok}} pts</p>
+                    </div>
+                </button>
+                <button class="value_button">
+                    <div class="value_div red">
+                        <img src="static/assets/superb.png" alt="Superb image" class="value_div_img need_adjustment">
+                        <p class="value_div_text {{'orange_text' if handicapOn}}">- {{superb * 0.75 if handicapOn else superb}} pts</p>
+                    </div>
+                </button>
+                {% endfor %}
+            </div>
+
+           <div id="input_info">
+               <input id="input_input" placeholder="Meter Score: " oninput="this.value=this.value.slice(0,3)"></input>
+           </div>
+
+           <div id="input_info_handicap">
+               <input id="handicap_input" placeholder="Meter Score: " oninput="this.value = this.value.slice(0,3)"></input>
+               <p id="handicap_calc">x 0.75 = 0 pts</p>
+           </div>
+
+            
+        </div>
+
+
+        <div class="center_submit_button">
+            <button type="button" id="player_footer_button">
+                <div id="player_footer_container">
+                    {% for name, pfp, handicapOn in nextPlayer %}
+                    <img src="static/full_character_assets/{{pfp}}_head.png" alt="{{pfp}} character pfp" id="next_character_img">
+                    <p id="next_button_text">{{name}} Turn</p>
+                    <img src="static/assets/black_right_arrow.png" alt="black right arrow" id="right_arrow_img">
+                    {% endfor %}
+                </div>
+            </button>
+        </div>
+                
+        
+
+        <script src="static/js/round_turn.js"></script>
+
+        <!-- Bootstrap Javascripts -->  
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

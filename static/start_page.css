@@ -1,0 +1,107 @@
+@font-face { font-family: Warioware; src: url('fonts/Wariowareinc.ttf'); } 
+
+
+html
+{
+    height: 100%;
+}
+
+body
+{
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat, no-repeat;
+    background-position: center;
+    background-size: cover, auto;
+    background-color: #473FFF;
+    background-image: url("backgrounds/main_page_stars.png"), linear-gradient(#473FFF, #0800C5);
+    background-attachment: fixed, fixed;
+}
+
+#logo_title
+{
+    margin: 0;
+    width: 45%;
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.start_components
+{
+    position: absolute;
+    bottom: 0%;
+    left: 30%;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+#samurai_drummer
+{
+    width: 30%;
+    float: left;
+}
+
+.start_button {
+    position: relative;
+    float: right;
+    width: 70%;
+    vertical-align: middle;
+    animation: float 6s ease-in-out infinite;
+}
+
+#button_image
+{
+    width: 100%
+}
+
+.text_components {
+    width: 100%;
+    position: absolute;
+    top: 54%;
+    left: 60%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+
+#text {
+    margin-top: 0.3em;
+    font-family: Warioware, sans-serif;
+    font-size: 3vw;
+}
+
+#arrow_image {
+    object-fit: contain;
+    height: 2em;
+    padding-left: 0.75em;
+    margin-bottom: 0.5em;
+
+}
+  
+#button_text:hover, #button_text:link, #button_text:visited, #button_text:active {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+@keyframes float {
+	0% {
+		transform: translatey(5px);
+	}
+	50% {
+		transform: translatey(-15px);
+	}
+	100% {
+		transform: translatey(5px);
+	}
+}
+
+

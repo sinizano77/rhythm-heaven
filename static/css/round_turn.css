@@ -1,0 +1,317 @@
+@font-face { font-family: Warioware; src: url('../fonts/Wariowareinc.ttf'); } 
+@font-face {font-family: Orkney; src: url('../fonts/Orkney_Regular_Italic.ttf');}
+
+
+body
+{
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat, no-repeat;
+    background-position: center;
+    background-size: cover, auto;
+    background-image: url("../backgrounds/gold_bg_minigame.png");
+    background-attachment: fixed, fixed;
+}
+
+#header {
+    position: absolute;
+    top: 2%;
+    left: 23%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+#player_header_container {
+    border-radius: 3em;
+    background-color: #9F8926;
+    border: 0.4em solid white;
+    padding: 0.1em 3.5em 0.1em 3.5em;
+    height: 100%;  
+}
+
+#player_header_text {
+    font-family: Warioware, sans-serif;
+    color: white;
+    font-size: 2.2vw;
+    margin-bottom: 0;
+}
+
+#form_info {
+    width: 90%;
+    margin: auto;
+    margin-top: 10%;
+
+}
+
+#player_turn_info {
+    display: flex;
+    justify-content: center;
+}
+
+#player_head_img {
+    height: 3vw;
+    margin-right: 1em;
+}
+
+#player_turn_text {
+    font-family: Warioware, sans-serif;
+    color: black;
+    font-size: 2vw;
+    margin-bottom: 0;
+}
+
+#category_text {
+    font-family: Warioware, sans-serif;
+    color: black;
+    font-size: 1.5vw;
+    margin-bottom: 0;
+}
+
+#category {
+    position: absolute;
+    top: 0%;
+    left: 42%;
+    width: fit-content;
+    margin: auto;
+    border-radius: 2em;
+    background-color: white;
+    border-width: 0.4em;
+    border-style: solid;
+    /*border: 0.4em solid #9F8926;*/
+    padding: 0.1em 3.5em 0.1em 3.5em;
+}
+
+#image {
+    position: absolute;
+    top: 9%;
+    left: 37%;
+    width: 25%;
+    border-radius: 1.8em;
+    background-color: white;
+    border-width: 0.4em;
+    border-style: solid;
+    /*border: 0.4em solid #9F8926;*/
+}
+
+#title_card_img {
+    width: 100%;
+}
+
+#card_info {
+    position: relative;
+    width: 100%;
+    height: 30vh;
+}
+
+#game_info {
+    text-align: center;
+}
+
+#game_name {
+    font-family: Warioware, sans-serif;
+    font-size: 4vh;
+    margin-bottom: 0;
+}
+
+#game_console {
+    font-family: Warioware, sans-serif;
+    font-size: 3vh;
+    margin-bottom: 0;
+}
+
+#reload_div {
+    width: fit-content;
+    border: 0.2em solid white;
+    border-radius: 3em;
+    padding: 0.1em 0.5em 0.1em 0.5em;
+    background-color: #B5B4B3;
+}
+
+#reload_text {
+    font-family: Warioware, sans-serif;
+    font-size: 3vh;
+    color: white;
+    margin-bottom: 0;
+}
+
+#reload_button {
+    background-color: transparent;
+    border-color: transparent;
+    position: absolute;
+    left: 75%;
+    top: 40%;
+}
+
+#input_input {
+    margin: auto;
+    border-radius: 3em;
+    background-color: white;
+    border: 0.2em solid #7387FB;    
+    font-family: Warioware, sans-serif;
+    font-size: 2vw;
+    margin-top: 4rem;
+    padding-top: 0.2em;
+    padding-left: 1.3em;
+    width: 20%;
+    /*display: grid;*/
+    display: none;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+#input_info_handicap {
+    display: none;
+    /*display: flex;*/
+    justify-content: center;
+    margin-top: 4rem;
+    padding-top: 0.2em;
+}
+
+#handicap_input {
+    border-radius: 3em;
+    background-color: white;
+    border: 0.2em solid #F86818;    
+    font-family: Warioware, sans-serif;
+    font-size: 2vw;
+    padding-left: 1.3em;
+    width: 20%;
+    display: grid;
+    margin-bottom: 1rem;
+}
+
+#handicap_calc {
+    font-family: Warioware, sans-serif;
+    font-size: 2.5vw;
+    margin-left: 1vw;
+}
+
+#value_buttons {
+    margin-top: 4%;
+    display: flex;
+    justify-content: center;
+}
+
+.value_button {
+    background-color: transparent;
+    border-color: transparent
+}
+
+.value_div {
+    border-radius: 3em;
+    background-color: black;
+    border-width: 0.4em;
+    border-style: solid;
+    padding: 0 1.5em 0 1.5em;
+    width: fit-content;
+    display: flex;
+}
+
+.orange_text {
+    color: #E75100;
+}
+
+.blue {
+    border-color: blue;
+}
+
+.green {
+    border-color: green;
+}
+
+.red {
+    border-color: red;
+}
+
+.value_div_img {
+    height: 2.5em;
+    margin-right: 0.2em;
+}
+
+.value_div_text {
+    font-family: Warioware, sans-serif;
+    margin-top: 0.5em;
+    font-size: 3vh;
+    color: white;
+}
+
+.need_adjustment {
+    margin-top: 0.5em;
+}
+
+
+.center_submit_button {
+    position: absolute;
+    bottom: 5%;
+    left: 36%;
+    animation: float 6s ease-in-out infinite;
+}
+
+#player_footer_button {
+    background-color: transparent;
+    border: transparent;
+}
+
+#player_footer_container {
+    border-radius: 3em;
+    background-color: white;
+    border: 0.4em solid #00B3F0;
+    padding: 0.1em 2em 0.1em 2em;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    animation: shadow 6s ease-in-out infinite;
+}
+
+#next_button:hover, #next_button:link, #next_button:visited, #next_button:active {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+#next_character_img {
+    height: 2.5em;
+    padding-right: 0.75em;
+    margin-bottom: 0.1em;
+}
+
+#next_button_text {
+    font-family: Warioware, sans-serif;
+    color: black;
+    font-size: 2.2vw;
+    margin-bottom: 0;
+}
+
+#right_arrow_img {
+    height: 1.25em;
+    padding-left: 0.75em;
+}
+
+  @keyframes float {
+	0% {
+		transform: translatey(20px);
+	}
+	50% {
+		transform: translatey(0px);
+	}
+	100% {
+		transform: translatey(20px);
+	}
+    
+}
+
+@keyframes shadow {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.8);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.4);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.8);
+	}
+    
+}
+  

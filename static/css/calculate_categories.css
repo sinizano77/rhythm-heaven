@@ -1,0 +1,229 @@
+@font-face { font-family: Warioware; src: url('../fonts/Wariowareinc.ttf'); } 
+@font-face {font-family: Orkney; src: url('../fonts/Orkney_Regular_Italic.ttf');}
+
+
+body
+{
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat, no-repeat;
+    background-position: center;
+    background-size: cover, auto;
+    background-color: #473FFF;
+    background-image: url("../backgrounds/stars_general.png"), linear-gradient(#473FFF, #0800C5);
+    background-attachment: fixed, fixed;
+}
+
+#header {
+    position: absolute;
+    top: 2%;
+    left: 20%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+#back_button {
+    height: 3.75em;
+    margin-right: 3%;
+    margin-top: 1%;
+}
+
+#player_header_container {
+    border-radius: 3em;
+    background-color: black;
+    border: 0.4em solid white;
+    padding: 0.1em 3.5em 0.1em 3.5em;
+    height: 100%;  
+}
+
+#player_header_text {
+    font-family: Warioware, sans-serif;
+    color: white;
+    font-size: 2.2vw;
+    margin-bottom: 0;
+}
+
+#title_row {
+    display: flex;
+    justify-content: center;
+    padding-left: 4em;
+    margin-top: 6%;
+}
+
+.title_text {
+    font-family: Warioware, sans-serif;
+    color: white;
+    font-size: 2.2vw;
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+}
+
+#spreadsheet_info {
+    width: 90%;
+    margin: auto;
+    overflow-y: auto;
+    height: 55vh;
+}
+
+.option_button {
+    background-color: transparent;
+    border: transparent;
+    height: 4.25em;
+    margin-right: 2.3em;
+}
+
+.remove_button_img, .add_button_img {
+    height: 4.25em;
+    margin-bottom: 0.5em;
+}
+
+.enabled {
+    color: white;
+}
+
+.disabled {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.hidden_amt {
+    display: none;
+}
+
+.deactivated {
+    opacity: 50%;
+}
+
+.file_row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+}
+
+#total_amt {
+    font-family: Warioware, sans-serif;
+    font-size: 2.5vw;
+    color: white;
+    margin-top: 0.4em;
+    padding-right: 5%;
+    text-align: center;
+}
+
+#error_message {
+    font-family: Orkney, sans-serif;
+    color: #FFA6A6;
+    font-size: 1.5vw;
+    margin-bottom: 0;
+    display: none;
+    text-align: center;
+    margin-top: 7%;
+}
+
+.category_info {
+    border-radius: 1em;
+    background-color: white;
+    border-width: 0.4em;
+    border-style: solid;
+    padding: 0.1em 2em 0.1em 2em;
+    width: 30%;
+}
+
+.category_name_and_amt {
+    font-family: Warioware;
+    margin-top: 0.2em;
+    font-size: 2.5vw;
+    margin-bottom: 0;
+}
+
+.name_field {
+    margin-left: 0.3em;
+    margin-right: 0.5em;
+    border-radius: 3em;
+    background-color: white;
+    border: 0.2em solid #00B3F0;    
+    font-family: Warioware;
+    font-size: 3vw;
+    margin-bottom: 0;
+    padding-top: 0.2em;
+    margin-left: 1em;
+    width: 12%;
+    text-align: center;
+}
+
+.percent_text {
+    font-family: Warioware;
+    font-size: 4vw;
+    margin-top: 0.3em;
+    margin-bottom: 0;
+}
+
+.center_submit_button {
+    position: absolute;
+    bottom: 5%;
+    left: 35%;
+    animation: float 6s ease-in-out infinite;
+}
+
+#player_footer_button {
+    background-color: transparent;
+    border: transparent;
+}
+
+#player_footer_container {
+    border-radius: 3em;
+    background-color: white;
+    border: 0.4em solid #00B3F0;
+    padding: 0.1em 2em 0.1em 2em;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    animation: shadow 6s ease-in-out infinite;
+}
+
+#next_button:hover, #next_button:link, #next_button:visited, #next_button:active {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+#next_button_text {
+    font-family: Warioware, sans-serif;
+    color: black;
+    font-size: 2.2vw;
+    margin-bottom: 0;
+}
+
+#right_arrow_img {
+    height: 1.25em;
+    padding-left: 0.75em;
+}
+
+  @keyframes float {
+	0% {
+		transform: translatey(20px);
+	}
+	50% {
+		transform: translatey(0px);
+	}
+	100% {
+		transform: translatey(20px);
+	}
+    
+}
+
+@keyframes shadow {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.8);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.4);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.8);
+	}
+    
+}
+  

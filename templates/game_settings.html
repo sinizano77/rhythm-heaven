@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            
+        </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+        <link rel="stylesheet" href="static/css/game_settings.css">
+
+         <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div id="header">
+            <img onclick="history.back()" src="static/assets/back_button.png" alt="back button" id="back_button">
+            <div id="player_header_container"><p id="player_header_text">4. Game Settings</p></div>
+        </div>
+
+        <p id="error_message">ERROR: Round amount can not be empty</p>
+
+        {% for game_mode, game_pool, rounds, point_mode in values %}
+        <div id="form_info">
+            <div class="selector_row">
+                <p class="selector_title"><u>Game Mode:</u></p>
+                <div class="selector_options">
+                    <div class="col">
+                        <button type="button" class="game_mode option_button left">
+                            <div class="option_button_div {{'deselected' if game_mode == 1 }}">
+                                <p class="option">Different Game</p>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="game_mode option_button right">
+                            <div class="option_button_div {{'deselected' if game_mode == 0 }}">
+                                <p class="option">Same Game</p>
+                            </div>
+                        </button>
+                    </div>
+                   
+                </div>
+                <ul>
+                    <li id="game_mode_text"><b>Different Game:</b> Each person gets a different game</li>
+                </ul>
+            </div>
+
+            <div class="input_row">
+                <p class="selector_title"><u>Rounds:</u></p>
+                <input id="round_field" type="number" oninput="this.value=this.value.slice(0,{{rounds|length}})" name="name" placeholder="Max: {{rounds}} rounds"></input>
+            </div>
+
+            <div class="selector_row">
+                <p class="selector_title"><u>Game Pool:</u></p>
+                <div class="selector_options">
+                    <div class="col">
+                        <button type="button" class="game_pool option_button left">
+                            <div class="option_button_div {{'deselected' if game_pool == 1 }}">
+                                <p class="option">All Available</p>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="game_pool option_button right">
+                            <div class="option_button_div {{'deselected' if game_pool == 0 }}">
+                                <p class="option">Progressive</p>
+                            </div>
+                        </button>
+                    </div>
+                   
+                </div>
+                <ul>
+                    <li id="game_pool_text"><b>All Available:</b> Every rhythm game is immediately available</li>
+                </ul>
+            </div>
+
+            <div class="selector_row">
+                <p class="selector_title"><u>Point Mode:</u></p>
+                <div class="selector_options">
+                    <div class="col">
+                        <button type="button" class="point_mode option_button left">
+                            <div class="option_button_div {{'deselected' if point_mode == 1 }}">
+                                <p class="option">On</p>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="point_mode option_button right">
+                            <div class="option_button_div {{'deselected' if point_mode == 0 }}">
+                                <p class="option">Off</p>
+                            </div>
+                        </button>
+                    </div>
+                   
+                </div>
+                <ul>
+                    <li>For games that provide point value meters, these become the overall score</li>
+                    <li>Games that don't have point values, use default scoring system</li>
+                </ul>
+            </div>
+            
+            
+            
+        </div>
+        {% endfor %}
+        
+        
+
+        
+    
+        
+        <div class="center_submit_button">
+            <button type="button" id="player_footer_button">
+                <div id="player_footer_container">
+                    <p id="next_button_text">Play</p>
+                    <img src="static/assets/black_right_arrow.png" alt="black right arrow" id="right_arrow_img">
+                </div>
+            </button>
+        </div>
+
+        
+
+        <script src="static/js/game_settings.js"></script>
+
+        <!-- Bootstrap Javascripts -->  
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
