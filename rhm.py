@@ -118,8 +118,7 @@ def round_turn():
             global global_current_game
             global_game_session.determine_point_value_and_add_to_data(global_current_game, int(point_value))
             global_skipped_game = None
-            data = {'point_value': point_value}
-            return jsonify(data)
+            return point_value
         print(game_chosen)
         global_skipped_game = game_chosen
         return game_chosen

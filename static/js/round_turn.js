@@ -33,7 +33,7 @@ function functionPromise(data, pointValue){
 }
 
 submitButton.addEventListener("click", () => {
-    submitFunction("", value).then( response => {
+    functionPromise(null, value).then( response => {
         window.location.href= '/round_turn';
     });
     

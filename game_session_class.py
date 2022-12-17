@@ -144,9 +144,7 @@ class GameSession:
             del self._chosen_players_for_turn[1]
         return [game, self._chosen_players_for_turn]
     
-    def determine_point_value_and_add_to_data(self, game_identifier, value):
-        game = self.convert_game_identifier_to_game(game_identifier)
-
+    def determine_point_value_and_add_to_data(self, game, value):
         final_value = value
         if game.get_category() in self._scoring.keys():
             if value == 'Try Again':
