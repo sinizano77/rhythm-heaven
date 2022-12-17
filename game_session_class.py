@@ -45,20 +45,25 @@ class GameSession:
         return self._current_players_left[0]
     
     def get_players_for_turn(self, skipped: bool) -> None:
+        print('in get player for turn function')
         if not skipped:
+            print('did not skip')
             self._chosen_players_for_turn = list()
             self._chosen_players_for_turn.append(self._current_players_left[0])
             del self._current_players_left[0]
 
         # get second player on standby
         all_available_players = list(set([player.get_id() for player in self._current_players_left] + [player.get_id() for player in self._next_round_players]))
+        print('before if statement to check all available players')
         if (len(all_available_players) != 0):
-                random_index = random.randint(0, len(all_available_players) - 1)
-                second_player_id = all_available_players[random_index]
-                for player in self._player_list:
-                    if player.get_id() == second_player_id:
-                        self._chosen_players_for_turn.append(player)
-                        break
+            print('in if statement')
+            random_index = random.randint(0, len(all_available_players) - 1)
+            second_player_id = all_available_players[random_index]
+            for player in self._player_list:
+                if player.get_id() == second_player_id:
+                    print('found player 2')
+                    self._chosen_players_for_turn.append(player)
+                    break
 
     # needed second player
     def remove_player_from_pool(self) -> None:
@@ -131,8 +136,7 @@ class GameSession:
     
     def generate_data_for_turn(self, skipped_game_identifier):
         skipped_game = self.convert_game_identifier_to_game(skipped_game_identifier)
-        if skipped_game == None:
-            self.get_players_for_turn(skipped_game != None)
+        self.get_players_for_turn(skipped_game != None)
         game = self.generate_game(self._player_list, skipped_game)
         if game.get_multiplayer():
             self.remove_player_from_pool()

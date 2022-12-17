@@ -110,7 +110,8 @@ def show_player_info():
 def round_turn():
     global global_skipped_game
     if request.method == 'POST':
-        game_chosen = request.form['skipped_game_identifiers'] # string needs to be converted to minigame type (done in game session)
+        # strings all come with extra "" around the value so they need to be replaced with empty char
+        game_chosen = request.form['skipped_game_identifiers'].replace('"', '') # string needs to be converted to minigame type (done in game session)
         point_value = request.form['point_value']
         if point_value != None and point_value != '':
             global global_game_session
