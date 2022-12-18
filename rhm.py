@@ -112,11 +112,11 @@ def round_turn():
     if request.method == 'POST':
         # strings all come with extra "" around the value so they need to be replaced with empty char
         game_chosen = request.form['skipped_game_identifiers'].replace('"', '') # string needs to be converted to minigame type (done in game session)
-        point_value = request.form['point_value']
+        point_value = request.form['point_value'].replace('"', '')
         if point_value != None and point_value != '':
             global global_game_session
             global global_current_game
-            global_game_session.determine_point_value_and_add_to_data(global_current_game, int(point_value))
+            global_game_session.determine_point_value_and_add_to_data(global_current_game, point_value)
             global_skipped_game = None
             return point_value
         print(game_chosen)
@@ -133,12 +133,18 @@ def round_turn_2p():
     return render_template('round_turn_2p.html')
 
 # this route is for testing only!
-@rhm_site.route("/show_info", methods=['GET'])
+@rhm_site.route("/show_info", methods=['GET', 'POST'])
 def show_info():
-    global global_settings_data
-    print("global")
-    print(global_settings_data)
-    return render_template('show_info.html', data=global_settings_data)
+    if request.method == 'POST':
+        point_value = request.form['point_value'].replace('"', '')
+        global global_skipped_game
+        global global_game_session
+        global global_current_game
+        global_game_session.determine_point_value_and_add_to_data(global_current_game, point_value)
+        global_skipped_game = None
+        return point_value
+    else:
+        return render_template('show_info.html', data = 'hi')
 
 # POST methods
 
@@ -417,6 +423,8 @@ def point_system_to_list(game: Minigame, chosen_players_list: list) -> list:
     return final_list
 
 def convert_player_data_to_list(chosen_players_list: list) -> list:
+    if chosen_players_list[0] == None:
+        return None
     data_list = list()
     if len(chosen_players_list) == 2:
         temp_list = list()

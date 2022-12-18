@@ -41,8 +41,18 @@ class GameSession:
     def get_turn_total(self):
         return len(self._player_list)
     
+    def start_round(self):
+        self._current_players_left = self._player_list
+        if (self._rounds - 1 > self._curr_rounds):
+            self._next_round_players = self._player_list
+    
+    def end_round(self):
+        self._curr_rounds += 1
+        
     def get_next_player(self):
-        return self._current_players_left[0]
+        if len(self._current_players_left) > 0:
+            return self._current_players_left[0]
+        return None
     
     def get_players_for_turn(self, skipped: bool) -> None:
         print('in get player for turn function')
@@ -140,7 +150,7 @@ class GameSession:
         game = self.generate_game(self._player_list, skipped_game)
         if game.get_multiplayer():
             self.remove_player_from_pool()
-        else:
+        elif len(self._chosen_players_for_turn) == 2:
             del self._chosen_players_for_turn[1]
         return [game, self._chosen_players_for_turn]
     

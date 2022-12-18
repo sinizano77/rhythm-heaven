@@ -6,7 +6,7 @@ var gamePlatform = document.getElementById('game_console').textContent;
 const value_buttons = document.querySelectorAll(".value_button");
 
 
-var value = 0;
+var value = "Try Again";
 // maybe add boolean later to make sure that a value button got clicked / input
 
 var submitButton = document.getElementById('player_footer_button');
@@ -32,12 +32,31 @@ function functionPromise(data, pointValue){
     });
 }
 
-submitButton.addEventListener("click", () => {
-    functionPromise(null, value).then( response => {
-        window.location.href= '/round_turn';
+function endRound(pointValue){
+
+    // fix later to better site. 
+
+    return $.post( "/show_info", {
+        'point_value': pointValue
     });
-    
-});
+}
+
+
+if (document.getElementById('next_button_text').textContent == 'End Round') {
+    // dummy stuff
+    endRound(value).then(response => {
+        window.location.href= '/show_info';
+    });
+}
+else {
+    submitButton.addEventListener("click", () => {
+        functionPromise(null, value).then( response => {
+            window.location.href= '/round_turn';
+        });
+        
+    });
+}
+
 
 value_buttons.forEach((button, index) => {
     button.addEventListener("click", () => {
