@@ -26,7 +26,7 @@ class GameSession:
         self._selected_rh_games = selected_rh_games
         self._scoring = scoring
         self._game_pool = game_pool
-        self._current_players_left = player_list
+        self._current_players_left = player_list[:]
         self._next_round_players = list()
         self._curr_rounds = 1
         self._chosen_players_for_turn = list()
@@ -42,9 +42,9 @@ class GameSession:
         return len(self._player_list)
     
     def start_round(self):
-        self._current_players_left = self._player_list
+        self._current_players_left = self._next_round_players
         if (self._rounds - 1 > self._curr_rounds):
-            self._next_round_players = self._player_list
+            self._next_round_players = self._player_list[:]
     
     def end_round(self):
         self._curr_rounds += 1
@@ -85,7 +85,8 @@ class GameSession:
 
     
     # print scores from highest to lowest    
-    def get_standings(self) -> None:
+    def get_standings(self) -> list:
+        print(self._player_list)
         return sorted((x for x in self._player_list), key=lambda x: x.get_points() * -1)
 
     # get game with probability calculations
@@ -94,7 +95,7 @@ class GameSession:
     def get_game(self) -> Minigame:
         # used for calculating weighted probability
         # get a number between 1 - 100 and if that number falls in a category, choose sth from that category
-        prob_index = random.randint(1, 100)
+        prob_index = random.randint(1, self._total_probability)
         prob_total = 0
         probability_data_list_index = 0
         while (prob_total < prob_index):
@@ -132,6 +133,8 @@ class GameSession:
     # call this function to generate the next game
     # will return the name of the game
     def generate_game(self, potential_players: list, skip_game: Minigame) -> Minigame:
+        print('generating games with all players')
+        print(potential_players)
         game_name = self.get_game()
 
         # if multiplayer enabled and only one player left in round, generate single player game

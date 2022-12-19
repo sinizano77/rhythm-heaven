@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            
+        </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+        <link rel="stylesheet" href="static/css/show_round_info.css">
+
+         <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div id="header">
+            <div id="player_header_container"><p id="player_header_text">Turn Order</p></div>
+        </div>
+
+        <div id="form_info">
+            <div id="info">
+                <div class="left_col">
+                    <table>
+                    {% for num, pfp, name, handicapOn, score in dataLeft %}
+                        {% if name|length > 0 %}
+                        <tr class="player_info">
+                            <td class="num_data"><p class="order_num">{{num}}.</p></td>
+                            {% if handicapOn %}
+                                <td class="img_data"><img src="static/character_icons/pfp_{{pfp}}_2.png" alt="{{pfp}}" class="pfp_image"></td>
+                            {% else %}
+                                <td class="img_data"><img src="static/character_icons/pfp_{{pfp}}_1.png" alt="{{pfp}}" class="pfp_image"></td>
+                            {% endif %}
+                            <td><p class="name">{{name}}</p></td>
+                            <td><p class="score">{{score}}</p></td>
+                        </tr>   
+                        {% endif %}
+                        {% if name|length == 0 %}
+                        <tr class="player_info">
+                            <td colspan="4"><p class="empty">------------</p></td>
+                        </tr>
+                        {% endif %}
+                   
+                    {% endfor %}
+                    </table>
+                </div>
+                <div class="right_col">
+                    <table>
+                        {% for num, pfp, name, handicapOn, score in dataRight %}
+                            {% if name|length > 0 %}
+                            <tr class="player_info">
+                                <td class="num_data"><p class="order_num">{{num}}.</p></td>
+                                {% if handicapOn %}
+                                    <td class="img_data"><img src="static/character_icons/pfp_{{pfp}}_2.png" alt="{{pfp}}" class="pfp_image"></td>
+                                {% else %}
+                                    <td class="img_data"><img src="static/character_icons/pfp_{{pfp}}_1.png" alt="{{pfp}}" class="pfp_image"></td>
+                                {% endif %}
+                                <td><p class="name">{{name}}</p></td>
+                                <td><p class="score">{{score}}</p></td>
+                            </tr>   
+                            {% endif %}
+                            {% if name|length == 0 %}
+                            <tr class="player_info">
+                                <td colspan="4"><p class="empty">------------</p></td>
+                            </tr>
+                            {% endif %}
+                       
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+
+
+        <div class="center_submit_button">
+            <button type="button" id="player_footer_button">
+                <div id="player_footer_container">
+                    <p id="next_button_text">Round {{roundNum}}</p>
+                    <img src="static/assets/black_right_arrow.png" alt="black right arrow" id="right_arrow_img">
+                </div>
+            </button>
+        </div>
+                
+        
+
+        <script src="static/js/show_round_info.js"></script>
+
+        <!-- Bootstrap Javascripts -->  
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

@@ -127,6 +127,15 @@ def round_turn():
         return render_template('round_turn_2p.html') # need to fix 2p html
     return render_template('round_turn.html', currPlayer = chosen_players, game = game_list, pointData = point_list, nextPlayer = next_player, round=global_game_session.get_round(), turn = global_game_session.get_remaining_players_in_round()) # using non point system rn
 
+@rhm_site.route("/show_round_info", methods=['GET'])
+def show_round_info():
+    global global_game_session
+    global_game_session.end_round()
+    global_game_session.start_round()
+    standing_list = global_game_session.get_standings()
+    data_tuple = convert_point_list_to_display(standing_list)
+    return render_template('show_round_info.html', dataLeft = data_tuple[0], dataRight = data_tuple[1], roundNum = global_game_session.get_round())
+
 # delete this later - for testing only
 @rhm_site.route("/round_turn_2p", methods=['GET', 'POST'])
 def round_turn_2p():
@@ -281,6 +290,38 @@ def convert_list_to_display(final_list):
         if x < 9:
             str_temp = " " + str(x+1)
         right_list.append(tuple([str_temp, '', '', '']))
+    return (left_list, right_list)
+
+def convert_point_list_to_display(player_list):
+    print('in convert point list to display')
+    print(player_list)
+    left_list = list()
+    right_list = list()
+    for x in range(min(len(player_list), 6)):
+        temp = list()
+        temp.append(str(x+1) + ".")
+        temp.append(player_list[x].get_pfp())
+        temp.append(player_list[x].get_name())
+        temp.append(player_list[x].get_handicap())
+        temp.append(player_list[x].get_points())
+        left_list.append(tuple(temp))
+    for x in range(len(left_list), 6):
+        left_list.append(tuple([str(x+1) + ".", '', '', '', '']))
+    
+    for x in range(6, len(player_list)):
+        temp = list()
+        temp.append(str(x+1) + ".")
+        temp.append(player_list[x].get_pfp())
+        temp.append(player_list[x].get_name())
+        temp.append(player_list[x].get_handicap())
+        temp.append(player_list[x].get_points())
+        right_list.append(tuple(temp))
+    for x in range(max(6, len(player_list)), 12):
+        right_list.append(tuple([str(x + 1) + ".", '', '', '', '']))
+
+    print(left_list)
+    print('-----')
+    print(right_list)
     return (left_list, right_list)
 
 

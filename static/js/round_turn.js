@@ -32,22 +32,13 @@ function functionPromise(data, pointValue){
     });
 }
 
-function endRound(pointValue){
-
-    // fix later to better site. 
-
-    return $.post( "/show_info", {
-        'point_value': pointValue
-    });
-}
-
 
 if (document.getElementById('next_button_text').textContent == 'End Round') {
     console.log("end round")
     // dummy stuff
     submitButton.addEventListener("click", () => {
-        endRound(value).then(response => {
-            window.location.href= '/show_info';
+        functionPromise(null, value).then(response => {
+            window.location.href= '/show_round_info';
         });
     })
     
