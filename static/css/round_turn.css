@@ -208,6 +208,10 @@ body
     display: flex;
 }
 
+.text_value_hidden {
+    display: none;
+}
+
 .orange_text {
     color: #E75100;
 }

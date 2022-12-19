@@ -164,9 +164,9 @@ class GameSession:
             if value == 'Try Again':
                 final_value = 0
             elif value == 'OK':
-                final_value = self._scoring[game.get_category()].split(":")[0]
+                final_value = float(self._scoring[game.get_category()].split(":")[0])
             elif value == 'Superb':
-                final_value = self._scoring[game.get_category()].split(":")[1]
+                final_value = float(self._scoring[game.get_category()].split(":")[1])
             else:
                 print('your logic sucks')
         
