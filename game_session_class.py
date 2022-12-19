@@ -118,11 +118,15 @@ class GameSession:
     def delete_game(self, game):
         category = game.get_category()
         index = 0
-        for index in range(len(self._probabilities)):
-            if self._probabilities[index].split(":")[0] == category:
-                break
-        self._total_probability -=  int(self._probabilities[index].split(":")[1])
-        del self._probabilities[index]
+        prob_amt = 0
+        filtered_games = [game_selected for game_selected in self._selected_rh_games if game_selected.get_category() == category]
+        if len(filtered_games) == 1:
+            for index in range(len(self._probabilities)):
+                if self._probabilities[index].split(":")[0] == category:
+                    prob_amt = int(self._probabilities[index].split(":")[1])
+                    self._total_probability -= prob_amt
+                    del self._probabilities[index]
+                    break
         self._selected_rh_games.remove(game)
     
     # call this function to generate the next game

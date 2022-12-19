@@ -43,12 +43,17 @@ function endRound(pointValue){
 
 
 if (document.getElementById('next_button_text').textContent == 'End Round') {
+    console.log("end round")
     // dummy stuff
-    endRound(value).then(response => {
-        window.location.href= '/show_info';
-    });
+    submitButton.addEventListener("click", () => {
+        endRound(value).then(response => {
+            window.location.href= '/show_info';
+        });
+    })
+    
 }
 else {
+    console.log("get next turn")
     submitButton.addEventListener("click", () => {
         functionPromise(null, value).then( response => {
             window.location.href= '/round_turn';
@@ -60,6 +65,7 @@ else {
 
 value_buttons.forEach((button, index) => {
     button.addEventListener("click", () => {
-        value = parseInt(button.firstElementChild.lastElementChild.textContent.split(" ")[0]);
+        value = button.firstElementChild.lastElementChild.textContent;
+        console.log(value)
     })
 });
