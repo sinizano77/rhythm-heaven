@@ -22,7 +22,7 @@
             <div id="player_turn_info">
                 {% for name, pfp, handicapOn in currPlayer %}
                 <img src="static/full_character_assets/{{pfp}}_head.png" alt="{{pfp}} character head" id="player_head_img">
-                <p id="player_turn_text" class="{{'orange_text' if handicapOn }}">{{name}} Game:</p>
+                <p style="color:{{'#E75100' if handicapOn else black}};" id="player_turn_text">{{name}} Game:</p>
                 {% endfor %}
             </div>
             
@@ -53,21 +53,21 @@
                 <button class="value_button">
                     <div class="value_div blue">
                         <img src="static/assets/try_again.png" alt="Try Again image" class="value_div_img need_adjustment">
-                        <p class="value_div_text {{'orange_text' if handicapOn}}">- 0 pts</p>
+                        <p style="color:{{'#E75100' if handicapOn else 'white'}};" class="value_div_text">- 0 pts</p>
                         <p class="text_value_hidden">Try Again</p>
                     </div>
                 </button>
                 <button class="value_button">
                     <div class="value_div green">
                         <img src="static/assets/ok.png" alt="OK image" class="value_div_img">
-                        <p class="value_div_text {{'orange_text' if handicapOn}}">- {{ok * 0.75 if handicapOn else ok}} pts</p>
+                        <p style="color:{{'#E75100' if handicapOn else 'white'}};" class="value_div_text">- {{ok * 0.75 if handicapOn else ok}} pts</p>
                         <p class="text_value_hidden">OK</p>
                     </div>
                 </button>
                 <button class="value_button">
                     <div class="value_div red">
                         <img src="static/assets/superb.png" alt="Superb image" class="value_div_img need_adjustment">
-                        <p class="value_div_text {{'orange_text' if handicapOn}}">- {{superb * 0.75 if handicapOn else superb}} pts</p>
+                        <p style="color:{{'#E75100' if handicapOn else 'white'}};" class="value_div_text">- {{superb * 0.75 if handicapOn else superb}} pts</p>
                         <p class="text_value_hidden">Superb</p>
                     </div>
                 </button>
