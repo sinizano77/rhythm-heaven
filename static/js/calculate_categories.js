@@ -9,6 +9,7 @@ var spreadSheet = document.getElementById('spreadsheet_info')
 var titleRow = document.getElementById('title_row');
 var errorText = document.getElementById('error_message');
 var totalAmtText = document.getElementById('total_amt');
+var totalProbText = document.getElementById('total_probability');
 
 var totalGames = getTotalGames();
 totalAmtText.textContent = "Total Games: " + String(totalGames);
@@ -97,6 +98,9 @@ function addListeners() {
 
                 percent_text[index].classList.remove('enabled');
                 percent_text[index].classList.add('disabled');
+
+                var probabilityTotal = getProbabilityTotal();
+                totalProbText.textContent = "/Total Probability: " + String(probabilityTotal);
             }
             else {
                 // update total game amount
@@ -123,6 +127,11 @@ function addListeners() {
             
         })
     });
+
+    $(".name_field").on("input", function() {
+        var probabilityTotal = getProbabilityTotal();
+        totalProbText.textContent = "/Total Probability: " + String(probabilityTotal);
+     });
 
 }
 

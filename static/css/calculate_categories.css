@@ -102,13 +102,16 @@ body
     margin: 1em;
 }
 
-#total_amt {
+#total_stuff {
+    display: flex;
+    justify-content: center;
+    margin: 0.4em 0.5em 0 0.5em;
+}
+
+#total_amt, #total_probability {
     font-family: Warioware, sans-serif;
     font-size: 2.5vw;
     color: white;
-    margin-top: 0.4em;
-    padding-right: 5%;
-    text-align: center;
 }
 
 #error_message {
