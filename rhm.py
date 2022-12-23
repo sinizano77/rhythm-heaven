@@ -133,8 +133,8 @@ def show_round_info():
     global_game_session.end_round()
     global_game_session.start_round()
     standing_list = global_game_session.get_standings()
-    data_tuple = convert_point_list_to_display(standing_list)
-    return render_template('show_round_info.html', dataLeft = data_tuple[0], dataRight = data_tuple[1], roundNum = global_game_session.get_round(), shouldHaveNextRound = global_game_session.should_have_next_round())
+    data_list = convert_point_list_to_display(standing_list)
+    return render_template('show_round_info.html', data = data_list, roundNum = global_game_session.get_round(), shouldHaveNextRound = global_game_session.should_have_next_round())
 
 # delete this later - for testing only
 @rhm_site.route("/round_turn_2p", methods=['GET', 'POST'])
@@ -295,13 +295,14 @@ def convert_list_to_display(final_list):
 def convert_point_list_to_display(player_list):
     left_list = list()
     right_list = list()
+    final_list = list()
     for x in range(min(len(player_list), 6)):
         temp = list()
         temp.append(str(x+1) + ".")
         temp.append(player_list[x].get_pfp())
         temp.append(player_list[x].get_name())
         temp.append(player_list[x].get_handicap())
-        temp.append(player_list[x].get_points())
+        temp.append(int(player_list[x].get_points()))
         left_list.append(tuple(temp))
     for x in range(len(left_list), 6):
         left_list.append(tuple([str(x+1) + ".", '', '', '', '']))
@@ -312,16 +313,15 @@ def convert_point_list_to_display(player_list):
         temp.append(player_list[x].get_pfp())
         temp.append(player_list[x].get_name())
         temp.append(player_list[x].get_handicap())
-        temp.append(player_list[x].get_points())
+        temp.append(int(player_list[x].get_points()))
         right_list.append(tuple(temp))
     for x in range(max(6, len(player_list)), 12):
         right_list.append(tuple([str(x + 1) + ".", '', '', '', '']))
 
-    print(left_list)
-    print('-----')
-    print(right_list)
-    return (left_list, right_list)
-
+    # merge into one list (merging #1 and 7, 2 and 8, 3 and 9, etc.)
+    for x in range(6):
+        final_list.append(left_list[x] + right_list[x])
+    return final_list
 
 
 # code for the game logic

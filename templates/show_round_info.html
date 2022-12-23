@@ -22,50 +22,42 @@
             <div id="info">
                 <div class="left_col">
                     <table>
-                    {% for num, pfp, name, handicapOn, score in dataLeft %}
-                        {% if name|length > 0 %}
-                        <tr class="player_info">
-                            <td class="num_data"><p class="order_num">{{num}}</p></td>
-                            {% if handicapOn %}
-                                <td class="img_data"><img src="static/character_icons/pfp_{{pfp}}_2.png" alt="{{pfp}}" class="pfp_image"></td>
-                            {% else %}
-                                <td class="img_data"><img src="static/character_icons/pfp_{{pfp}}_1.png" alt="{{pfp}}" class="pfp_image"></td>
-                            {% endif %}
-                            <td><p class="name">{{name}}</p></td>
-                            <td><p class="score">{{score}}</p></td>
-                        </tr>   
-                        {% endif %}
-                        {% if name|length == 0 %}
-                        <tr class="player_info">
-                            <td colspan="4"><p class="empty">------------</p></td>
+                        <tr>
+                            <th colspan="3"><p class="header">Player</p></th>
+                            <th colspan="1"><p class="header">Pts</p></th>
+                            <th colspan="3"><p class="header">Player</p></th>
+                            <th colspan="1"><p class="header">Pts</p></th>
+                            
                         </tr>
-                        {% endif %}
-                   
-                    {% endfor %}
-                    </table>
-                </div>
-                <div class="right_col">
-                    <table>
-                        {% for num, pfp, name, handicapOn, score in dataRight %}
+                    {% for num, pfp, name, handicapOn, score, num2, pfp2, name2, handicapOn2, score2 in data %}
+                        
+                        <tr class="player_info">
                             {% if name|length > 0 %}
-                            <tr class="player_info">
                                 <td class="num_data"><p class="order_num">{{num}}</p></td>
-                                {% if handicapOn %}
-                                    <td class="img_data"><img src="static/character_icons/pfp_{{pfp}}_2.png" alt="{{pfp}}" class="pfp_image"></td>
-                                {% else %}
-                                    <td class="img_data"><img src="static/character_icons/pfp_{{pfp}}_1.png" alt="{{pfp}}" class="pfp_image"></td>
-                                {% endif %}
+                                <td class="img_data"><img src="static/character_icons/pfp_{{pfp}}_{{2 if handicapOn else 1}}.png" alt="{{pfp}}" class="pfp_image"></td>
                                 <td><p class="name">{{name}}</p></td>
                                 <td><p class="score">{{score}}</p></td>
-                            </tr>   
+                            {% else %}
+                                <td colspan="3"><p class="empty">----------</p></td>
+                                <td style="border-left: 3px solid #EBCB85; border-right: 3px solid #EBCB85;" colspan="1"><p class="empty">-</p></td>
                             {% endif %}
-                            {% if name|length == 0 %}
-                            <tr class="player_info">
-                                <td colspan="4"><p class="empty">------------</p></td>
-                            </tr>
+
+                            {% if name2|length > 0 %}
+                                <td class="num_data"><p class="order_num">{{num2}}</p></td>
+                                {% if handicapOn2 %}
+                                <td class="img_data"><img src="static/character_icons/pfp_{{pfp2}}_2.png" alt="{{pfp2}}" class="pfp_image"></td>
+                                {% else %}
+                                <td class="img_data"><img src="static/character_icons/pfp_{{pfp2}}_1.png" alt="{{pfp2}}" class="pfp_image"></td>
+                                {% endif %}
+                                <td><p class="name">{{name2}}</p></td>
+                                <td><p class="score">{{score2}}</p></td>
+                            {% else %}
+                                <td colspan="3"><p class="empty">----------</p></td>
+                                <td style="border-left: 3px solid #EBCB85; border-right: 3px solid #EBCB85;" colspan="1"><p class="empty">-</p></td>
                             {% endif %}
-                       
-                        {% endfor %}
+                            
+                        </tr>                      
+                    {% endfor %}
                     </table>
                 </div>
             </div>

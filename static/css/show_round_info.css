@@ -68,20 +68,13 @@ body
 }
 
 .left_col {
-    width: 50%;
-    margin-right: 2em;
     display: inline-block;
-}
-
-.right_col {
-    width: 50%;
-    margin-left: 2em;
 }
 
 #info {
     width: 60%;
     margin: auto;
-    margin-top: 11%;
+    margin-top: 8%;
     margin-left: 23%;
     position: absolute;
     display: flex;
@@ -96,26 +89,34 @@ table {
 }
 
 .num_data {
-    width: 3vw;
     padding-right: 0.1em;
 }
 
 .img_data {
-    width: 5vw;
     padding-left: 0.1em;
     
 }
 
 .order_num {
     font-family: Warioware, sans-serif;
-    font-size: 2.5vw;
+    font-size: 2vw;
     margin-bottom: 0;
 }
 
 .empty {
     font-family: Warioware, sans-serif;
-    font-size: 2.5vw;
+    font-size: 2vw;
+    margin-left: 1em;
+    margin-right: 1em;
     margin-bottom: 0;
+    text-align: center;
+}
+
+.header {
+    font-family: Warioware, sans-serif;
+    font-size: 2vw;
+    margin-bottom: 0;
+    text-align: center;
 }
 
 .pfp_image {
@@ -125,12 +126,31 @@ table {
     height: 3em;
 }
 
-.name, .score {
+.name {
     font-family: Warioware, sans-serif;
-    font-size: 2.5vw;
+    font-size: 2vw;
     margin-bottom: 0;
 }
 
+.score {
+    font-family: Warioware, sans-serif;
+    font-size: 1.8vw;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+tr:not(:first-child):not(:last-child) {
+    border-bottom: 3px solid #EBCB85;
+}
+
+
+table td:last-child, table td:nth-child(4), table td:nth-child(5) {
+    border-left: 3px solid #EBCB85;
+}
+
+table td {
+    height: 4em;
+}
 
 
 .center_submit_button {
