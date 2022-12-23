@@ -134,7 +134,7 @@ def show_round_info():
     global_game_session.start_round()
     standing_list = global_game_session.get_standings()
     data_tuple = convert_point_list_to_display(standing_list)
-    return render_template('show_round_info.html', dataLeft = data_tuple[0], dataRight = data_tuple[1], roundNum = global_game_session.get_round())
+    return render_template('show_round_info.html', dataLeft = data_tuple[0], dataRight = data_tuple[1], roundNum = global_game_session.get_round(), shouldHaveNextRound = global_game_session.should_have_next_round())
 
 # delete this later - for testing only
 @rhm_site.route("/round_turn_2p", methods=['GET', 'POST'])
@@ -293,8 +293,6 @@ def convert_list_to_display(final_list):
     return (left_list, right_list)
 
 def convert_point_list_to_display(player_list):
-    print('in convert point list to display')
-    print(player_list)
     left_list = list()
     right_list = list()
     for x in range(min(len(player_list), 6)):
@@ -420,6 +418,7 @@ def initialize_game_session():
     global global_settings_data
     global global_probability_data
     global_game_session = GameSession(clean_player_list, int(global_settings_data[0][2]), int(global_settings_data[0][0]), convert_to_list(global_probability_data), get_filtered_games(), get_scoring_values(), int(global_settings_data[0][1]))
+    global_game_session.start_round()
 
 # get a game with data
 def get_game_turn_data(skipped_game: str):

@@ -27,7 +27,7 @@ class GameSession:
         self._scoring = scoring
         self._game_pool = game_pool
         self._current_players_left = player_list[:]
-        self._next_round_players = list()
+        self._next_round_players = player_list[:]
         self._curr_rounds = 1
         self._chosen_players_for_turn = list()
         self._total_probability = 100 #this number decreases for every option that gets pulled out of self._probabilities
@@ -38,13 +38,23 @@ class GameSession:
     def get_remaining_players_in_round(self):
         return len(self._current_players_left)
     
+    def should_have_next_round(self):
+        return self._curr_rounds <= self._rounds
+    
     def get_turn_total(self):
         return len(self._player_list)
     
     def start_round(self):
+        print('start round')
+        print(self._next_round_players)
         self._current_players_left = self._next_round_players
-        if (self._rounds - 1 > self._curr_rounds):
+        if (self._rounds > self._curr_rounds):
+            print('next round players instituted')
             self._next_round_players = self._player_list[:]
+            print(self._next_round_players)
+        else:
+            print('next round players are empty')
+            self._next_round_players = list()
     
     def end_round(self):
         self._curr_rounds += 1
@@ -59,6 +69,9 @@ class GameSession:
         if not skipped:
             print('did not skip')
             self._chosen_players_for_turn = list()
+            print('current player list:')
+            print(self._current_players_left)
+            print(self._next_round_players)
             self._chosen_players_for_turn.append(self._current_players_left[0])
             del self._current_players_left[0]
 
@@ -82,6 +95,7 @@ class GameSession:
             self._current_players_left.remove(player)
         else:
             self._next_round_players.remove(player)
+            print('next round player removed')
 
     
     # print scores from highest to lowest    
