@@ -16,6 +16,7 @@ var value = "Try Again";
 // maybe add boolean later to make sure that a value button got clicked / input
 
 var submitButton = document.getElementById('player_footer_button');
+var submitDiv = document.getElementsByClassName('center_submit_button');
 
 
 reloadButton.addEventListener("click", () => {
@@ -30,6 +31,8 @@ reloadButton.addEventListener("click", () => {
 
 undoButton.addEventListener("click", () => {
     confirmDiv.style.display = 'none';
+    submitButton.disabled = true;
+    submitDiv[0].style.opacity = '50%';
     toggleValueButtonVisibility();
 });
 
@@ -72,6 +75,8 @@ value_buttons.forEach((button, index) => {
         confirmDiv.style.display = 'flex';
         confirmText.textContent = 'Added ' + cleanUpValue(value_list[index].textContent) + ' to ' + playerText.split(" ").slice(0, -1).join(" ") + " score";
         toggleValueButtonVisibility();
+        submitButton.disabled = false;
+        submitDiv[0].style.opacity = '100%';
     })
 });
 
