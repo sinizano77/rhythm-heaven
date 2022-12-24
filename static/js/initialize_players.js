@@ -8,7 +8,7 @@ var currActive = 1;
 
 var handicapArr = [false, false, false, false, false, false, false, false, false, false, false, false];
 
-const pfpArray = ['barista', 'choir_kid', 'donpan', 'frog_dancer', 'moai', 'nova', 'pink_monkey', 'pop_singer', 'reporter', 'tap_girl', 'tibby', 'trio_clapper']
+const pfpArray = ['moai', 'pink_monkey', 'trio_clapper', 'barista', 'choir_kid', 'donpan', 'frog_dancer', 'nova', 'pop_singer', 'reporter', 'tap_girl', 'tibby', 'trio_clapper']
 
 
 var visualBreak = '<div class="better_break"></div>';
