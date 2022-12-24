@@ -204,6 +204,19 @@ body
     padding-left: 0.75em;
 }
 
+::-webkit-input-placeholder {  /* Chrome/Opera/Safari */
+    color: #c7c7c7;
+  }
+  ::-moz-placeholder {  /* Firefox 19+ */
+    color: #c7c7c7;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    color: #c7c7c7;
+  }
+  :-ms-input-placeholder {  /* Edge/IE 10+ */
+    color: #c7c7c7;
+  }
+
   @keyframes float {
 	0% {
 		transform: translatey(20px);
