@@ -76,7 +76,7 @@ body
     transform: translateX(-50%);
     width: fit-content;
     margin: auto;
-    border-radius: 2em;
+    border-radius: 0.5em;
     background-color: white;
     border-width: 0.4em;
     border-style: solid;

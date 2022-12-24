@@ -440,7 +440,7 @@ def convert_game_data_to_string_list(game: Minigame) -> list:
     temp_list.append(game.get_game_name()) # game name
     temp_list.append(game.get_category()) # game category
     temp_list.append(game.get_platform()) # game platform
-    temp_list.append(game.get_color()) # color
+    temp_list.append("#" + game.get_color()) # color
     temp_list.append(game.get_title_card_url()) # image
     # this assumes that the category is not endless
     data_list.append(temp_list)
