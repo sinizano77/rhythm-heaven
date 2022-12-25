@@ -77,14 +77,20 @@ else {
 
 $("#score_field").on("input", function() {
     var totalAmt = 0;
-    var tempTextArr = multiplier_text.textContent.split(" ");
+    var tempTextArr = multiplier_text.innerHTML.split(" ");
     var multiplierAmt = parseFloat(tempTextArr[1]);
     var tempVal = score_input.value;
     if (tempVal.length == 0) {
         tempVal = 0;
     }
+    if (tempTextArr.includes("0.75)")) {
+        var handicapAmt = multiplierAmt * parseInt(tempVal) * 0.75;
+        tempTextArr[10] = "(" + String(handicapAmt) + ")";
+    }
+    
     totalAmt = multiplierAmt * parseInt(tempVal);
-    multiplier_text.textContent = tempTextArr.slice(0, -2).join(" ") + " " + String(totalAmt) + " pts";
+    multiplier_text.innerHTML = tempTextArr.slice(0, -2).join(" ") + " " + String(totalAmt) + " pts";
+    
 
  });
 
@@ -151,8 +157,10 @@ function cleanUpValue(value) {
     }
     else {
         console.log('value arr more than length of 5');
-        handicap_point = parseInt(value_arr[6].replace("(", "").replace(")", ""));
-        int_point = parseInt(value_arr[7]);
+        console.log(value_arr)
+        handicap_point = parseInt(value_arr[8].replace("(", "").replace(")", ""));
+        int_point = parseInt(value_arr[10]);
+        console.log(handicap_point)
         return String(handicap_point) + " " + String(int_point);
     }
 }
