@@ -144,6 +144,43 @@ body
     top: 40%;
 }
 
+#timer {
+    position: absolute;
+    justify-content: center;
+    left: 77%;
+    top: 65%;
+}
+
+#timer_value {
+    background-color: white;
+    border: 0.2em solid #FAA61A;  
+    margin: auto;  
+    width: fit-content;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+}
+
+#timer_button {
+    background-color: #FAA61A;
+    border-radius: 3em;
+    border: 0.2em solid white;
+    margin: auto;
+    margin-top: 0.5em;
+    padding: 0.2em 1.5em 0.2em 1.5em;
+}
+
+#timer_value_text {
+    font-family: Warioware, sans-serif;
+    font-size: 2.5vh;
+    margin-bottom: 0;
+}
+
+#timer_button_text {
+    font-family: Warioware, sans-serif;
+    font-size: 3vh;
+    color: white;
+    margin-bottom: 0;
+}
+
 #undo_button, #enter_button {
     background-color: transparent;
     border-color: transparent;

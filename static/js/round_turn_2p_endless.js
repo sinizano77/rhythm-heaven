@@ -13,6 +13,11 @@ const score_input = document.getElementById('score_field');
 const enter_button_div = document.getElementById('enter_button_div');
 const enterButton = document.getElementById('enter_button');
 
+const timerButton = document.getElementById('timer_button');
+const timerButtonText = document.getElementById('timer_button_text');
+const timerValueText = document.getElementById('timer_value_text');
+var globalTimerInterval = null;
+
 
 var value = "0";
 // maybe add boolean later to make sure that a value button got clicked / input
@@ -89,6 +94,39 @@ $("#score_field").on("input", function() {
         evt.preventDefault();
     }
 });
+
+timerButton.addEventListener("click", () => {
+    if (timerButtonText.textContent == 'Start') {
+        timerButtonText.textContent = 'Pause';
+        var durationArr = timerValueText.textContent.split(":");
+        var durationTotal = (parseInt(durationArr[0]) * 60) + parseInt(durationArr[1]);
+        startTimer(durationTotal, timerValueText);
+    }
+    else {
+        timerButtonText.textContent = 'Start';
+        clearInterval(globalTimerInterval);
+    }
+});
+
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    globalTimerInterval = setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+        if (minutes == 0 && seconds == '00') {
+            clearInterval(globalTimerInterval);
+            timerButtonText.textContent = 'Reset';
+        }
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
 
 enterButton.addEventListener("click", () => {
     value = score_input.value;
