@@ -17,6 +17,7 @@ const timerButton = document.getElementById('timer_button');
 const timerButtonText = document.getElementById('timer_button_text');
 const timerValueText = document.getElementById('timer_value_text');
 var globalTimerInterval = null;
+const timerValueReset = timerValueText.textContent;
 
 
 var value = "0";
@@ -108,9 +109,13 @@ timerButton.addEventListener("click", () => {
         var durationTotal = (parseInt(durationArr[0]) * 60) + parseInt(durationArr[1]);
         startTimer(durationTotal, timerValueText);
     }
-    else {
+    else if (timerButtonText.textContent == 'Pause') {
         timerButtonText.textContent = 'Start';
         clearInterval(globalTimerInterval);
+    }
+    else {
+        timerValueText.textContent = timerValueReset;
+        timerButtonText.textContent = 'Start';
     }
 });
 
