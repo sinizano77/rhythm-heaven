@@ -258,6 +258,7 @@ body
 
 
 .center_submit_button {
+    opacity: 50%;
     position: absolute;
     bottom: 5%;
     left: 50%;

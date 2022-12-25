@@ -15,25 +15,28 @@
 
     <body>
         <div id="header">
-            <div id="player_header_container"><p id="player_header_text">Round 1 - 5 Turns Remaining</p></div>
+            <div id="player_header_container"><p id="player_header_text">Round {{round}} - {{turn}} Turns Remaining</p></div>
         </div>
 
         <div id="form_info">
             <div id="player_turn_info">
+                {% for name, pfp, handicapOn, name2, pfp2, handicapOn2 in currPlayer %}
                 <div id="player_heads">
-                    <img src="static/full_character_assets/trio_clapper_head.png" alt="character head" class="player_head_img">
-                    <img src="static/full_character_assets/tap_girl_head.png" alt="character head" class="player_head_img">
+                    <img src="static/full_character_assets/{{pfp}}_head.png" alt="{{pfp}}}}" class="player_head_img">
+                    <img src="static/full_character_assets/{{pfp2}}_head.png" alt="{{pfp2}}" class="player_head_img">
                 </div>
                 
-                <p id="player_turn_text"><span style="color: #F86818"> Player X's </span> and Player Y's Game:</p>
+                <p id="player_turn_text"><span style="color: {{'#F86818' if handicapOn else black}}"> {{name}} </span> and <span style="color: {{'#F86818' if handicapOn2 else black}}">{{name2}}</span> Game:</p>
+                {% endfor %}
             </div>
 
+            {% for name, category, platform, color, image in game %}
             <div id="card_info">
-                <div id="image">
+                <div id="image" style="border-color: {{color}}">
                     <img src="static/title_cards/cosmic_dance_silver.png" id="title_card_img">
                 </div>
-                <div id="category">
-                    <p id="category_text">Medium</p>
+                <div id="category" style="border-color: {{color}}">
+                    <p id="category_text">{{category}}</p>
                 </div>
                 <button id="reload_button">
                     <div id="reload_div">
@@ -43,29 +46,35 @@
             </div>
 
             <div id="game_info">
-                <p id="game_name"><u>Space Dance</u></p>
-                <p id="game_console">Megamix</p>
+                <p id="game_name"><u>{{name}}</u></p>
+                <p id="game_console">{{platform}}</p>
             </div>
+            {% endfor %}
 
             <div id="value_buttons">
+                {% for ok, superb, handicapOn in pointData %}
                 <button class="value_button">
                     <div class="value_div blue">
                         <img src="static/assets/try_again.png" alt="Try Again image" class="value_div_img need_adjustment">
                         <p class="value_div_text">- 0 pts</p>
+                        <p class="text_value_hidden">Try Again</p>
                     </div>
                 </button>
                 <button class="value_button">
                     <div class="value_div green">
                         <img src="static/assets/ok.png" alt="OK image" class="value_div_img">
-                        <p class="value_div_text">- <span style="color: #F86818">(37.5)</span> 50 pts</p>
+                        <p class="value_div_text">- <span style="color: #F86818; display: {{'inline' if handicapOn else 'none'}}">({{ok * 0.75}})</span> {{ok}} pts</p>
+                        <p class="text_value_hidden">OK</p>
                     </div>
                 </button>
                 <button class="value_button">
                     <div class="value_div red">
                         <img src="static/assets/superb.png" alt="Superb image" class="value_div_img need_adjustment">
-                        <p class="value_div_text">- <span style="color: #F86818">(75)</span> 100 pts</p>
+                        <p class="value_div_text">- <span style="color: #F86818; display: {{'inline' if handicapOn else 'none'}}">({{superb * 0.75}})</span> {{superb}} pts</p>
+                        <p class="text_value_hidden">Superb</p>
                     </div>
                 </button>
+                {% endfor %}
             </div>
 
             <div id="confirm_div">
@@ -93,9 +102,16 @@
         <div class="center_submit_button">
             <button type="button" id="player_footer_button">
                 <div id="player_footer_container">
-                    <img src="static/full_character_assets/barista_head.png" alt="character pfp" id="next_character_img">
-                    <p id="next_button_text">Player X's Turn</p>
-                    <img src="static/assets/black_right_arrow.png" alt="black right arrow" id="right_arrow_img">
+                    {% if nextPlayer is not none %}   
+                        {% for name, pfp, handicapOn in nextPlayer %}
+                            <img src="static/full_character_assets/{{pfp}}_head.png" alt="{{pfp}} character pfp" id="next_character_img">
+                            <p id="next_button_text">{{name}} Turn</p>
+                            <img src="static/assets/black_right_arrow.png" alt="black right arrow" id="right_arrow_img">
+                        {% endfor %}
+                    {% else %}
+                        <p id="next_button_text">End Round</p>
+                        <img src="static/assets/black_right_arrow.png" alt="black right arrow" id="right_arrow_img">
+                    {% endif %}
                 </div>
             </button>
         </div>

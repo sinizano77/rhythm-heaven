@@ -123,8 +123,9 @@ def round_turn():
         global_skipped_game = game_chosen
         return game_chosen
     game_list, point_list, chosen_players, next_player = get_game_turn_data(global_skipped_game)
-    if len(chosen_players[0]) == 5:
-        return render_template('round_turn_2p.html') # need to fix 2p html
+    print(chosen_players)
+    if len(chosen_players[0]) == 6:
+        return render_template('round_turn_2p.html', currPlayer = chosen_players, game = game_list, pointData = point_list, nextPlayer = next_player, round=global_game_session.get_round(), turn = global_game_session.get_remaining_players_in_round()) # need to fix 2p html
     return render_template('round_turn.html', currPlayer = chosen_players, game = game_list, pointData = point_list, nextPlayer = next_player, round=global_game_session.get_round(), turn = global_game_session.get_remaining_players_in_round()) # using non point system rn
 
 @rhm_site.route("/show_round_info", methods=['GET'])
@@ -466,12 +467,12 @@ def convert_player_data_to_list(chosen_players_list: list) -> list:
     if chosen_players_list[0] == None:
         return None
     data_list = list()
+    temp_list = list()
     if len(chosen_players_list) == 2:
-        temp_list = list()
-        temp_list.append(chosen_players_list[0].get_name() + "'s " + chosen_players_list[1].get_name() + "'s")
         for player in chosen_players_list:
+            temp_list.append(player.get_name() + "'s") # name
             temp_list.append(player.get_pfp()) # pfp
-            temp_list.append(player.get_handicap()) #handicap
+            temp_list.append(player.get_handicap()) #handicap\
         data_list.append(temp_list)
     else:
         player = chosen_players_list[0]
