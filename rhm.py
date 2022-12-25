@@ -138,9 +138,9 @@ def show_round_info():
     return render_template('show_round_info.html', data = data_list, roundNum = global_game_session.get_round(), shouldHaveNextRound = global_game_session.should_have_next_round())
 
 # delete this later - for testing only
-@rhm_site.route("/round_turn_2p", methods=['GET', 'POST'])
-def round_turn_2p():
-    return render_template('round_turn_2p.html')
+@rhm_site.route("/round_turn_2p_endless", methods=['GET', 'POST'])
+def round_turn_2p_endless():
+    return render_template('round_turn_2p_endless.html')
 
 # this route is for testing only!
 @rhm_site.route("/show_info", methods=['GET', 'POST'])
