@@ -245,6 +245,14 @@ body
     margin-bottom: 0;
 }
 
+.handicap {
+    font-family: Warioware, sans-serif;
+    font-size: 1.5vw;
+    padding-top: 0.5em;
+    margin-bottom: 0;
+    color: #F86818;
+}
+
 #enter_button_div {
     justify-content: center;
     display: flex;
