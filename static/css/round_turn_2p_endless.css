@@ -78,9 +78,11 @@ body
     transform: translateX(-50%);
     width: fit-content;
     margin: auto;
-    border-radius: 2em;
+    border-radius: 0.5em;
     background-color: white;
-    border: 0.4em solid #9F8926;
+    border-width: 0.4em;
+    border-style: solid;
+    /*border: 0.4em solid #9F8926;*/
     padding: 0.1em 3.5em 0.1em 3.5em;
 }
 
@@ -92,7 +94,9 @@ body
     width: 25%;
     border-radius: 1.8em;
     background-color: white;
-    border: 0.4em solid #9F8926;
+    border-width: 0.4em;
+    border-style: solid;
+    /*border: 0.4em solid #9F8926;*/
 }
 
 #title_card_img {
