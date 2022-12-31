@@ -79,23 +79,26 @@ else {
 $("#score_field").on("input", function() {
     var totalAmt = 0;
     var tempTextArr = multiplier_text.innerHTML.split(" ");
+    var tempOnlyText = multiplier_text.textContent;
+    console.log(tempTextArr)
     var multiplierAmt = parseFloat(tempTextArr[1]);
     var tempVal = score_input.value;
     if (tempVal.length == 0) {
         tempVal = 0;
     }
-    if (tempTextArr.includes("0.75)")) {
-        var handicapAmt = multiplierAmt * parseInt(tempVal) * 0.75;
-        tempTextArr[10] = "(" + String(handicapAmt) + ")";
+    if (tempOnlyText.includes("0.75)")) {
+        console.log("includes 0.75");
+        var handicapAmt = (multiplierAmt * parseInt(tempVal) * 0.75).toFixed(1);
+        tempTextArr[14] = "(" + String(handicapAmt) + ")";
     }
     
-    totalAmt = multiplierAmt * parseInt(tempVal);
+    totalAmt = (multiplierAmt * parseInt(tempVal)).toFixed(1);
     multiplier_text.innerHTML = tempTextArr.slice(0, -2).join(" ") + " " + String(totalAmt) + " pts";
     
 
  });
 
- document.querySelector("#score_field").addEventListener("keypress", function (evt) {
+ score_input.addEventListener("keypress", function (evt) {
     if (evt.which < 48 || evt.which > 57)
     {
         evt.preventDefault();
