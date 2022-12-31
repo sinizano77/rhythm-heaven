@@ -47,8 +47,8 @@ def initialize_players():
 
 @rhm_site.route("/import_spreadsheet", methods=['GET'])
 def import_spreadsheet():
-    #BASE_DIR = 'C:\\Users\\Tiffany\\Desktop\\rhythm-heaven\\static\\rhythm_games'
-    BASE_DIR = 'C:\\Users\\siniz\\AppData\\Local\\Programs\\Python\\Python38\\rhythm multiplayer 2\\static\\rhythm_games'
+    BASE_DIR = 'C:\\Users\\Tiffany\\Desktop\\rhythm-heaven\\static\\rhythm_games'
+    # BASE_DIR = 'C:\\Users\\siniz\\AppData\\Local\\Programs\\Python\\Python38\\rhythm multiplayer 2\\static\\rhythm_games'
     files = os.listdir(BASE_DIR)
     filtered_files = [file for file in files if file.endswith('.xlsx')]
     global global_file_data
@@ -124,6 +124,13 @@ def round_turn():
         return game_chosen
     game_list, point_list, chosen_players, next_player = get_game_turn_data(global_skipped_game)
     print(chosen_players)
+    print(game_list)
+    print(point_list)
+    if len(chosen_players[0]) == 6 and game_list[0][1] == '2 Player Endless':
+        # move time from point_list to game_list
+        game_list[0].append(int(float(point_list[0][1])))
+        del point_list[0][1]
+        return render_template('round_turn_2p_endless.html', currPlayer = chosen_players, game = game_list, pointData = point_list, nextPlayer = next_player, round=global_game_session.get_round(), turn = global_game_session.get_remaining_players_in_round())
     if len(chosen_players[0]) == 6:
         return render_template('round_turn_2p.html', currPlayer = chosen_players, game = game_list, pointData = point_list, nextPlayer = next_player, round=global_game_session.get_round(), turn = global_game_session.get_remaining_players_in_round()) # need to fix 2p html
     return render_template('round_turn.html', currPlayer = chosen_players, game = game_list, pointData = point_list, nextPlayer = next_player, round=global_game_session.get_round(), turn = global_game_session.get_remaining_players_in_round()) # using non point system rn
@@ -207,8 +214,8 @@ def settings_data():
 
 # HELPER functions
 def get_game_count(file_name: str):
-    #BASE_DIR = 'C:\\Users\\Tiffany\\Desktop\\rhythm-heaven\\static\\rhythm_games'
-    BASE_DIR = 'C:\\Users\\siniz\\AppData\\Local\\Programs\\Python\\Python38\\rhythm multiplayer 2\\static\\rhythm_games'
+    BASE_DIR = 'C:\\Users\\Tiffany\\Desktop\\rhythm-heaven\\static\\rhythm_games'
+    # BASE_DIR = 'C:\\Users\\siniz\\AppData\\Local\\Programs\\Python\\Python38\\rhythm multiplayer 2\\static\\rhythm_games'
     full_file_name = BASE_DIR + '\\' + file_name
     game_count = 0
     wookbook = openpyxl.load_workbook(full_file_name)
@@ -224,8 +231,8 @@ def get_game_count(file_name: str):
     return game_count
 
 def add_game_categories(file_name:str):
-    #BASE_DIR = 'C:\\Users\\Tiffany\\Desktop\\rhythm-heaven\\static\\rhythm_games'
-    BASE_DIR = 'C:\\Users\\siniz\\AppData\\Local\\Programs\\Python\\Python38\\rhythm multiplayer 2\\static\\rhythm_games'
+    BASE_DIR = 'C:\\Users\\Tiffany\\Desktop\\rhythm-heaven\\static\\rhythm_games'
+    #BASE_DIR = 'C:\\Users\\siniz\\AppData\\Local\\Programs\\Python\\Python38\\rhythm multiplayer 2\\static\\rhythm_games'
     full_file_name = BASE_DIR + '\\' + file_name
     global global_game_category
 
@@ -336,8 +343,8 @@ def store_player_list_nicer(new_list):
 
 # code for getting scoring values
 def get_scoring_values():
-    #scoring_info = 'C:\\Users\\Tiffany\\Desktop\\rhythm-heaven\\static\\game_scoring\\Game_Scoring.xlsx'
-    scoring_info = 'C:\\Users\\siniz\\AppData\\Local\\Programs\\Python\\Python38\\rhythm multiplayer 2\\static\\game_scoring\\Game_Scoring.xlsx'
+    scoring_info = 'C:\\Users\\Tiffany\\Desktop\\rhythm-heaven\\static\\game_scoring\\Game_Scoring.xlsx'
+    #scoring_info = 'C:\\Users\\siniz\\AppData\\Local\\Programs\\Python\\Python38\\rhythm multiplayer 2\\static\\game_scoring\\Game_Scoring.xlsx'
     wookbook = openpyxl.load_workbook(scoring_info)
     scoring_dict = dict()
 
@@ -365,8 +372,8 @@ def get_scoring_values():
 
 # create all the info of the games
 def get_filtered_games():
-    #BASE_DIR = 'C:\\Users\\Tiffany\\Desktop\\rhythm-heaven\\static\\rhythm_games'
-    BASE_DIR = 'C:\\Users\\siniz\\AppData\\Local\\Programs\\Python\\Python38\\rhythm multiplayer 2\\static\\rhythm_games'
+    BASE_DIR = 'C:\\Users\\Tiffany\\Desktop\\rhythm-heaven\\static\\rhythm_games'
+    # BASE_DIR = 'C:\\Users\\siniz\\AppData\\Local\\Programs\\Python\\Python38\\rhythm multiplayer 2\\static\\rhythm_games'
     global global_file_data
     global global_game_category
     filtered_games = list()
@@ -449,10 +456,10 @@ def convert_game_data_to_string_list(game: Minigame) -> list:
 
 def point_system_to_list(game: Minigame, chosen_players_list: list) -> list:
     global global_game_session
-    if (game.get_category() != 'Endless'):
+    if ("Endless" not in game.get_category()):
         data_list = [float(item) for item in global_game_session.get_scoring()[game.get_category()].split(":")] # points
     else:
-        data_list = global_game_session.get_scoring()[gaming.get_name() + ":Endless"].split(":")
+        data_list = global_game_session.get_scoring()[game.get_game_name() + ":Endless"].split(":")
     if len(chosen_players_list) == 2 and (chosen_players_list[0].get_handicap() or chosen_players_list[1].get_handicap()):
         data_list.append(True) # append handicapOn attribute
     elif len(chosen_players_list) == 1 and chosen_players_list[0].get_handicap():
