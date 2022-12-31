@@ -228,6 +228,10 @@ body
     display: flex;
 }
 
+.text_value_hidden {
+    display: none;
+}
+
 .blue {
     border-color: blue;
 }
