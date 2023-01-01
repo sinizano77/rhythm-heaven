@@ -47,8 +47,8 @@ def initialize_players():
 
 @rhm_site.route("/import_spreadsheet", methods=['GET'])
 def import_spreadsheet():
-    BASE_DIR = 'C:\\Users\\Tiffany\\Desktop\\rhythm-heaven\\static\\rhythm_games'
-    # BASE_DIR = 'C:\\Users\\siniz\\AppData\\Local\\Programs\\Python\\Python38\\rhythm multiplayer 2\\static\\rhythm_games'
+    #BASE_DIR = 'C:\\Users\\Tiffany\\Desktop\\rhythm-heaven\\static\\rhythm_games'
+    BASE_DIR = 'C:\\Users\\siniz\\AppData\\Local\\Programs\\Python\\Python38\\rhythm multiplayer 2\\static\\rhythm_games'
     files = os.listdir(BASE_DIR)
     filtered_files = [file for file in files if file.endswith('.xlsx')]
     global global_file_data
@@ -214,8 +214,8 @@ def settings_data():
 
 # HELPER functions
 def get_game_count(file_name: str):
-    BASE_DIR = 'C:\\Users\\Tiffany\\Desktop\\rhythm-heaven\\static\\rhythm_games'
-    # BASE_DIR = 'C:\\Users\\siniz\\AppData\\Local\\Programs\\Python\\Python38\\rhythm multiplayer 2\\static\\rhythm_games'
+    #BASE_DIR = 'C:\\Users\\Tiffany\\Desktop\\rhythm-heaven\\static\\rhythm_games'
+    BASE_DIR = 'C:\\Users\\siniz\\AppData\\Local\\Programs\\Python\\Python38\\rhythm multiplayer 2\\static\\rhythm_games'
     full_file_name = BASE_DIR + '\\' + file_name
     game_count = 0
     wookbook = openpyxl.load_workbook(full_file_name)
@@ -231,8 +231,8 @@ def get_game_count(file_name: str):
     return game_count
 
 def add_game_categories(file_name:str):
-    BASE_DIR = 'C:\\Users\\Tiffany\\Desktop\\rhythm-heaven\\static\\rhythm_games'
-    #BASE_DIR = 'C:\\Users\\siniz\\AppData\\Local\\Programs\\Python\\Python38\\rhythm multiplayer 2\\static\\rhythm_games'
+    #BASE_DIR = 'C:\\Users\\Tiffany\\Desktop\\rhythm-heaven\\static\\rhythm_games'
+    BASE_DIR = 'C:\\Users\\siniz\\AppData\\Local\\Programs\\Python\\Python38\\rhythm multiplayer 2\\static\\rhythm_games'
     full_file_name = BASE_DIR + '\\' + file_name
     global global_game_category
 
@@ -343,8 +343,8 @@ def store_player_list_nicer(new_list):
 
 # code for getting scoring values
 def get_scoring_values():
-    scoring_info = 'C:\\Users\\Tiffany\\Desktop\\rhythm-heaven\\static\\game_scoring\\Game_Scoring.xlsx'
-    #scoring_info = 'C:\\Users\\siniz\\AppData\\Local\\Programs\\Python\\Python38\\rhythm multiplayer 2\\static\\game_scoring\\Game_Scoring.xlsx'
+    #scoring_info = 'C:\\Users\\Tiffany\\Desktop\\rhythm-heaven\\static\\game_scoring\\Game_Scoring.xlsx'
+    scoring_info = 'C:\\Users\\siniz\\AppData\\Local\\Programs\\Python\\Python38\\rhythm multiplayer 2\\static\\game_scoring\\Game_Scoring.xlsx'
     wookbook = openpyxl.load_workbook(scoring_info)
     scoring_dict = dict()
 
@@ -372,8 +372,8 @@ def get_scoring_values():
 
 # create all the info of the games
 def get_filtered_games():
-    BASE_DIR = 'C:\\Users\\Tiffany\\Desktop\\rhythm-heaven\\static\\rhythm_games'
-    # BASE_DIR = 'C:\\Users\\siniz\\AppData\\Local\\Programs\\Python\\Python38\\rhythm multiplayer 2\\static\\rhythm_games'
+    #BASE_DIR = 'C:\\Users\\Tiffany\\Desktop\\rhythm-heaven\\static\\rhythm_games'
+    BASE_DIR = 'C:\\Users\\siniz\\AppData\\Local\\Programs\\Python\\Python38\\rhythm multiplayer 2\\static\\rhythm_games'
     global global_file_data
     global global_game_category
     filtered_games = list()
