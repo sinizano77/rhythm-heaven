@@ -45,4 +45,4 @@ def get_starting_info() -> GameSession:
 
 if __name__ == "__main__":
     #main()
-    check_handicap(None)
+    _check_handicap(None)

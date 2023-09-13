@@ -6,15 +6,6 @@ class Round:
     def __init__(self, ordered_player_list : list[Player]):
         self._ordered_player_list = ordered_player_list
         self._point_total = 0.00
-    
-    def get_minigame():
-        pass
-
-    def order_round_points():
-        pass
-
-    def print_round_points():
-        pass
 
 class GameSession: 
 
